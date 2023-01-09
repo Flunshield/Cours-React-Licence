@@ -134,7 +134,7 @@ function App() {
     console.log("The object sorted and tabulated : ", tabSort)
     console.log("End Function sortObject")
     console.log("===============================================================")
-    return tab
+    return tabSort
   }
 
   findLargestNumber(numbers)
