@@ -124,14 +124,8 @@ function App() {
   {
     console.log("Start Function sortObject")
     console.log("Original purpose : ", objectC)
-    let a, b, c
-    ({a, b, c} = objectC)
-    console.log("a = ", a)
-    console.log("b = ", b)
-    console.log("c : ", c)
-    const tab = [a, b, c]
-    const tabSort = tab.sort()
-    console.log("The object sorted and tabulated : ", tabSort)
+    const tabSort = (tabObjectC) => tabObjectC.sort()
+    console.log("The object sorted and tabulated : ", tabSort([...Object.entries(objectC)]))
     console.log("End Function sortObject")
     console.log("===============================================================")
     return tabSort
@@ -149,7 +143,7 @@ function App() {
   sortObject (objectC)
 
   return (
-    <h1 className=''>Launch the browser console to view the exercises</h1>
+    <h1>Launch the browser console to view the exercises</h1>
   )
 }
 
