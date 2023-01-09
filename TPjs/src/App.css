@@ -35,4 +35,9 @@
   to {
     transform: rotate(360deg);
   }
+
+}
+h1 {
+  margin-left : 20%;
+  margin-top: 20%;
 }
