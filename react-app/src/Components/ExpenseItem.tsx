@@ -4,14 +4,15 @@ import './ExpenseItem.css';
 
 
 interface ExpenseItemProps {
-  date: Date;
-  title: string;
-  amount: number;
+  id?: Number,
+  date?: Date,
+  title?: string,
+  amount?: number;
 }
 
 const ExpenseItem =
 ({ date,
-  title,
+  title = "",
   amount
 }: ExpenseItemProps) => {
 return (
