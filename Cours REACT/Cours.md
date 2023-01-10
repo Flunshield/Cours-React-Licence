@@ -14,4 +14,6 @@ TP JS
 
 La logique dans le composant parent et l'affichage dans le composant enfant.
 
+Avant de commencer a coder, il faut découper l'application en composant de manière a identifer plus facilement les composants à créer.
+
 

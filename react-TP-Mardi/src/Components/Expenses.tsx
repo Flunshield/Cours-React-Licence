@@ -1,5 +1,5 @@
 
-import { Box, Card, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { Box, Card, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import ExpenseItem from './ExpenseItem';
 import '../CSS/Expenses.css';
 import ItemsInterface from './../interface/ItemsInterface'
@@ -14,12 +14,12 @@ const Expenses =
   const [year, setYear] = useState();
 
   const handleChange = (e: any) => {
+    e.preventDefault();
     setYear(e.target.value);
   };
   
   const yearOne = 2020
   const yearTwo = 2021
-  
 return (
     <>
       <Box>

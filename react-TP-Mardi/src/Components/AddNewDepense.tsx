@@ -1,42 +1,40 @@
-import { Box, Button, TextField } from "@mui/material";
-import { useEffect, useState } from "react";
-import ItemsInterface from "../interface/ItemsInterface";
-
-
-interface NewDepenseProps {
-    
-  items: ItemsInterface[];
+import React, { useState } from 'react';
+import ItemsInterface from '../interface/ItemsInterface';
+/*
+interface AddNewDepenseProps {
+    items: ItemsInterface[];
   }
-  
-  const NewDepense = 
-  ({ items }: NewDepenseProps) => {
 
-    const [newDepense, setNewDepense] = useState<ItemsInterface[]>() 
+const AddNewDepense = ({ items
+} : AddNewDepenseProps) => {
+  const [number, setNumber] = useState(0);
+  const [text, setText] = useState('');
 
-    useEffect(() => {
-        
-    })
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const newDate = new Date()
 
-    function getValue()
-    {
-        const date = new Date()
-        setNewDepense(
-        [
-            date,
-            document.getElementById("amount"),
-            document.getElementById("title")
-        ])
-        items.push(newDepense)
-    }
-    return (
-        <form onSubmit={this.handleSubmit}>
-        <label>
-          Nom :
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Envoyer" />
-      </form>
-    );
+    return 
   };
-  
-  export default NewDepense;
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Number:
+        <input 
+        type="number" 
+        value={items.title} 
+        onChange={(e) => setNumber({ ...items, number: e.target.value})} />
+      </label>
+      <br />
+      <label>
+        Text:
+        <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+      </label>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+export default AddNewDepense;*/
