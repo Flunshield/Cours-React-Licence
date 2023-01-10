@@ -5,7 +5,7 @@ function App() {
 
   const numbers = [1,2,3,4,5,6]
   const words = ["un", "deux", "trois"]
-  const word = "ununununjkjhgfghj"
+  const word = "unununujjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjnjkjhgfghj"
   const letter = "j"
   const arrayOfArray = [0, 1, 2, [3, 4, 5], 6, 7];
   const arrayNumber = [0, 0, 1, 2, 3, 3, 4, 5, 6, 6]
@@ -13,7 +13,7 @@ function App() {
   let y = 2
   const objectA = {a: 1, c: 3, b: 2}
   const objectB = {c: 4, d: 5}
-  const objectC = {a: 9, c: 5, b: 2}
+  const objectC = {a: 9, c: 5, b: 2, z: 15, d:8}
 
   function findLargestNumber (numbers)
   {

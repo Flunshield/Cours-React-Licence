@@ -7,4 +7,11 @@ JSX regroupe du html du css et du javascript.
 
 Utilie :  destructuration, opérator, 
 
-Lundi : TP JS
+# Lundi : 
+TP JS
+
+# Mardi :
+
+La logique dans le composant parent et l'affichage dans le composant enfant.
+
+
