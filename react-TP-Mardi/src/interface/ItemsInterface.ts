@@ -1,7 +1,7 @@
 interface ItemsInterface {
     date?: Date;
-    title?: string;
-    amount?: number;
+    title?: String;
+    amount?: Number;
 }
 
 export default ItemsInterface;

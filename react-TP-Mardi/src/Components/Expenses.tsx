@@ -1,7 +1,7 @@
 
 import { Box, Card, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import ExpenseItem from './ExpenseItem';
-import './Expenses.css';
+import '../CSS/Expenses.css';
 import ItemsInterface from './../interface/ItemsInterface'
 import { useState } from 'react';
 
@@ -19,7 +19,7 @@ const Expenses =
   
   const yearOne = 2020
   const yearTwo = 2021
-console.log(year)
+  
 return (
     <>
       <Box>

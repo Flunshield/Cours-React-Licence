@@ -1,6 +1,6 @@
 import { Card } from '@mui/material';
 import ExpenseDate from './ExpenseDate';
-import './ExpenseItem.css';
+import '../CSS/ExpenseItem.css';
 
 
 interface ExpenseItemProps {

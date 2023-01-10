@@ -1,4 +1,4 @@
-import './ExpenseDate.css';
+import '../CSS/ExpenseDate.css';
 
 interface ExpenseDateProps {
   date?: Date
