@@ -43,7 +43,7 @@ export default function HeadBand(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <List className='list'>
-      {navItems.map(
+        {navItems.map(
           (item) =>
             item.displayLink && (
               <ListItem key={item.route} disablePadding>
@@ -67,7 +67,7 @@ export default function HeadBand(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex'}} className='HeadBand'>
+    <Box sx={{ display: 'flex' }} className='HeadBand'>
       <AppBar component="nav">
         <Toolbar>
 
@@ -78,16 +78,16 @@ export default function HeadBand(props: Props) {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             Projet REACT ISITECH RPI-DEV
-          
-            </Typography>
+
+          </Typography>
           <Box>
-          <Typography
-            textAlign={'left'}
-            variant="h5"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            {drawer}
+            <Typography
+              textAlign={'left'}
+              variant="h5"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            >
+              {drawer}
             </Typography>
           </Box>
         </Toolbar>
