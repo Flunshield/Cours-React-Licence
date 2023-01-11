@@ -15,18 +15,35 @@ const ListHeroCard =
   typePersonnage,
     setIsMaj 
   }: ListHeroCardProps) => {
-    
-      const equipWeaponEnemy = (IdPlayer: number) => {
+
+    const [isHero] = useState(typePersonnage)
+      const equipWeapon = (IdPlayer: number) => {
         setIsMaj(0)
-      fetch(`https://localhost:7148/equipWeaponEnemy/${IdPlayer}`, {
+      fetch(`https://localhost:7148/equipWeapon/${IdPlayer}`, {
         method: 'PUT'
       })
         setIsMaj(typePersonnage)
     };
 
+    const equipWeaponEnemy = (IdPlayer: number) => {
+      setIsMaj(0)
+    fetch(`https://localhost:7148/equipWeaponEnemy/${IdPlayer}`, {
+      method: 'PUT'
+    })
+      setIsMaj(typePersonnage)
+  };
+
     const desequipWeaponEnemy = (IdPlayer: number) => {
       setIsMaj(0)
       fetch(`https://localhost:7148/removeWeaponEnemy/${IdPlayer}`, {
+        method: 'PUT'
+      })
+        setIsMaj(typePersonnage)
+    };
+
+    const removeWeaponHero = (IdPlayer: number) => {
+      setIsMaj(0)
+      fetch(`https://localhost:7148/removeWeaponHero/${IdPlayer}`, {
         method: 'PUT'
       })
         setIsMaj(typePersonnage)
@@ -62,10 +79,10 @@ const ListHeroCard =
               </Table>
             </TableContainer>
       </Card>
-      <Button variant="contained" onClick={() => equipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
+      <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? equipWeapon(listPlayer.id) : equipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
         Equiper l'arme du joueur
       </Button>
-      <Button variant="contained" onClick={() => desequipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
+      <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? removeWeaponHero(listPlayer.id) : desequipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
         Déséquiper l'arme du joueur
       </Button>
     </Grid>
