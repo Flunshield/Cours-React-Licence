@@ -17,7 +17,7 @@ const ListHeroCard =
   }: ListHeroCardProps) => {
 
     const [isHero] = useState(typePersonnage)
-      const equipWeapon = (IdPlayer: number) => {
+      const PutEquipWeapon = (IdPlayer: number) => {
         setIsMaj(0)
       fetch(`https://localhost:7148/equipWeapon/${IdPlayer}`, {
         method: 'PUT'
@@ -25,7 +25,7 @@ const ListHeroCard =
         setIsMaj(typePersonnage)
     };
 
-    const equipWeaponEnemy = (IdPlayer: number) => {
+    const PutEquipWeaponEnemy = (IdPlayer: number) => {
       setIsMaj(0)
     fetch(`https://localhost:7148/equipWeaponEnemy/${IdPlayer}`, {
       method: 'PUT'
@@ -33,7 +33,7 @@ const ListHeroCard =
       setIsMaj(typePersonnage)
   };
 
-    const desequipWeaponEnemy = (IdPlayer: number) => {
+    const PutEsequipWeaponEnemy = (IdPlayer: number) => {
       setIsMaj(0)
       fetch(`https://localhost:7148/removeWeaponEnemy/${IdPlayer}`, {
         method: 'PUT'
@@ -41,7 +41,7 @@ const ListHeroCard =
         setIsMaj(typePersonnage)
     };
 
-    const removeWeaponHero = (IdPlayer: number) => {
+    const PutRemoveWeaponHero = (IdPlayer: number) => {
       setIsMaj(0)
       fetch(`https://localhost:7148/removeWeaponHero/${IdPlayer}`, {
         method: 'PUT'
@@ -79,10 +79,10 @@ const ListHeroCard =
               </Table>
             </TableContainer>
       </Card>
-      <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? equipWeapon(listPlayer.id) : equipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
+      <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? PutEquipWeapon(listPlayer.id) : PutEquipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
         Equiper l'arme du joueur
       </Button>
-      <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? removeWeaponHero(listPlayer.id) : desequipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
+      <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? PutRemoveWeaponHero(listPlayer.id) : PutEsequipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
         Déséquiper l'arme du joueur
       </Button>
     </Grid>

@@ -27,6 +27,11 @@ export default function HeadBand(props: Props) {
       label: 'Liste de personnage',
       displayLink: true,
     },
+    {
+      route: '/CreatePlayers',
+      label: 'Création de personnage',
+      displayLink: true,
+    },
   ];
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
