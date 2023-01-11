@@ -1,14 +1,22 @@
-import { Grid, Card, CardContent, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Grid, Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from "@mui/material";
 import { ListPlayer } from "../Interfaces/ListPlayer";
 import '../Css/ListPlayerCard.css';
 
-type ListHeroCardProps = {
-  listHero: ListPlayer;
+interface ListHeroCardProps {
+  listPlayer: ListPlayer;
+  typePersonnage: number;
+  setIsMaj: (n:number)=>void;
+  isMaj: number;
 };
 
-export default function ListHeroCard({ listHero }: ListHeroCardProps) {
+const ListHeroCard = 
+ ({ listPlayer,
+  typePersonnage,
+    setIsMaj 
+  }: ListHeroCardProps) => {
+    
   return (
-    <Grid>
+    <Grid className="GridListPlayerCard">
       <Card sx={{ maxWidth: 650}} className={'All'}>
             <TableContainer component={Paper}>
               <Table aria-label="simple table">
@@ -26,17 +34,22 @@ export default function ListHeroCard({ listHero }: ListHeroCardProps) {
                       sx={{ '&:last-child td, &:last-child th': { border: 0 } }} className={'All'}
                     >
                       <TableCell component="th" scope="row">
-                      {listHero.name}
+                      {listPlayer.name}
                       </TableCell>
-                      <TableCell align="center">{listHero.classePlayer}</TableCell>
-                      <TableCell align="center">{listHero.vitality}</TableCell>
-                      <TableCell align="center">{listHero.strength}</TableCell>
-                      <TableCell align="center">{listHero.wisdom}</TableCell>
+                      <TableCell align="center">{listPlayer.classePlayer}</TableCell>
+                      <TableCell align="center">{listPlayer.vitality}</TableCell>
+                      <TableCell align="center">{listPlayer.strength}</TableCell>
+                      <TableCell align="center">{listPlayer.wisdom}</TableCell>
                     </TableRow>
                 </TableBody>
               </Table>
             </TableContainer>
       </Card>
+      <Button variant="contained" onClick={() => setIsMaj(typePersonnage)} className="btnListPlayerCard">
+        Equiper l'arme du joueur
+      </Button>
     </Grid>
   );
 }
+
+export default ListHeroCard;

@@ -1,3 +1,16 @@
 .All {
    text-align: center;
+   margin-bottom: 5px;
+   margin-top: 20px;
+}
+
+.GridListPlayerCard {
+    display: flex;
+}
+
+.btnListPlayerCard {
+    height:40px;
+    width: auto;
+    top: 65px;
+    left: 10px
 }

@@ -8,8 +8,6 @@ interface Props {
   window?: () => Window;
 }
 
-const drawerWidth = 240;
-
 type NavRoute = {
   route: string;
   label: string;
@@ -64,7 +62,7 @@ export default function HeadBand(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex'}} className='All'>
+    <Box sx={{ display: 'flex'}} className='HeadBand'>
       <AppBar component="nav">
         <Toolbar>
 

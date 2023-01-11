@@ -1,12 +1,16 @@
-import { Button, Grid } from "@mui/material";
-import { useState, useEffect } from "react";
+import { Button } from "@mui/material";
+import { useEffect, useState } from "react";
 import { ListPlayer } from "../Interfaces/ListPlayer";
-import ListHeroCard from "./ListHeroCard";
+import '../Css/GameControl.css';
+import ListPlayersCard from "./ListPlayersCard";
 
 export default function GameControl() {
     const [listHero, setListHero] = useState<ListPlayer[]>([])
     const [listEnemy, setListEnemy] = useState<ListPlayer[]>([])
-    const [isUse, setIsUse] = useState(false)
+    const [isUseHero, setIsUseHero] = useState(false)
+    const [isUseEnemy, setIsUseEnemy] = useState(false)
+    const [isMaj, setIsMaj] = useState(0)
+    const [typePersonnage, setTypePersonnage] = useState(0)
     const API_LINK_GET_HERO = "https://localhost:7148/getAllHeroes"
     const API_LINK_GET_ENEMY = "https://localhost:7148/getAllEnemys"
     
@@ -18,7 +22,9 @@ export default function GameControl() {
       .then((res) => res.json())
       .then((result: ListPlayer[]) => {
         setListHero(result);
-        setIsUse(true)
+        setIsUseHero(true)
+        setIsUseEnemy(false)
+        setTypePersonnage(1)
       });
   }
 
@@ -30,52 +36,59 @@ export default function GameControl() {
         .then((res) => res.json())
         .then((result: ListPlayer[]) => {
           setListEnemy(result);
-          setIsUse(true)
+          setIsUseEnemy(true)
+          setIsUseHero(false)
+          setTypePersonnage(2)
         });
     }
 
+    useEffect(() => {
+      if(isMaj == 1)
+      {
+        GetHeros()
+      }
+      if(isMaj == 2)
+      {
+      GetEnemies()
+    }
+    }, [isMaj])
+
   const listPlayers = () =>
   {
-    setIsUse(false)
+    setIsUseHero(false)
+    setIsUseEnemy(false)
   }
+console.log(typePersonnage)
   return (
-<>
-      <Grid
-        justifyContent={'center'}
-        marginTop={10}
-      >
-        {isUse ?
-        <Button variant="contained" onClick={listPlayers}>
-          Fermer la liste des héros
-        </Button>
-        :
-        <Button variant="contained" onClick={GetHeros}>
-          Ouvrir la liste des héros
-        </Button>}
-      </Grid>
+    <>
+      <div className="btn">
+        <div className="btnUnit">
+          {isUseHero && !isUseEnemy ?
+          <Button variant="contained" onClick={listPlayers}>
+            Fermer la liste des héros
+          </Button>
+          :
+          <Button variant="contained" onClick={GetHeros}>
+            Ouvrir la liste des héros
+          </Button>}
+        </div>
 
-      <Grid
-        justifyContent={'center'}
-        marginTop={1}
-      >
-        {isUse ?
-        <Button variant="contained" onClick={listPlayers}>
-          Fermer la liste des enemies
-        </Button>
-        :
-        <Button variant="contained" onClick={GetEnemies}>
-          Ouvrir la liste des enemies
-        </Button>}
-        {isUse && listEnemy.map((listEnemy) => {
-          return <ListHeroCard key={listEnemy.id} listHero={listEnemy} />;
-        })}
-      </Grid>
-      
-      {isUse && listHero.map((listHero) => {
-        return <ListHeroCard key={listHero.id} listHero={listHero} />;
+        <div>
+          {isUseEnemy && !isUseHero ?
+          <Button variant="contained" onClick={listPlayers}>
+            Fermer la liste des enemies
+          </Button>
+          :
+          <Button variant="contained" onClick={GetEnemies}>
+            Ouvrir la liste des enemies
+          </Button>}
+        </div>
+      </div>
+      {isUseHero && !isUseEnemy && listHero.map((listHero) => {
+        return <ListPlayersCard key={listHero.id} listPlayer={listHero} typePersonnage={typePersonnage} isMaj={isMaj} setIsMaj={setIsMaj}/>;
       })}
-      {isUse && listEnemy.map((listEnemy) => {
-        return <ListHeroCard key={listEnemy.id} listHero={listEnemy} />;
+      {isUseEnemy && !isUseHero && listEnemy.map((listEnemy) => {
+        return <ListPlayersCard key={listEnemy.id} listPlayer={listEnemy} typePersonnage={typePersonnage} isMaj={isMaj} setIsMaj={setIsMaj} />;
       })}
     </>
   );
