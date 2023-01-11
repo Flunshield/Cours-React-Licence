@@ -1,6 +1,7 @@
-import { Grid, Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from "@mui/material";
+import { Grid, Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Alert } from "@mui/material";
 import { ListPlayer } from "../Interfaces/ListPlayer";
 import '../Css/ListPlayerCard.css';
+import { useState } from "react";
 
 interface ListHeroCardProps {
   listPlayer: ListPlayer;
@@ -15,6 +16,22 @@ const ListHeroCard =
     setIsMaj 
   }: ListHeroCardProps) => {
     
+      const equipWeaponEnemy = (IdPlayer: number) => {
+        setIsMaj(0)
+      fetch(`https://localhost:7148/equipWeaponEnemy/${IdPlayer}`, {
+        method: 'PUT'
+      })
+        setIsMaj(typePersonnage)
+    };
+
+    const desequipWeaponEnemy = (IdPlayer: number) => {
+      setIsMaj(0)
+      fetch(`https://localhost:7148/removeWeaponEnemy/${IdPlayer}`, {
+        method: 'PUT'
+      })
+        setIsMaj(typePersonnage)
+    };
+
   return (
     <Grid className="GridListPlayerCard">
       <Card sx={{ maxWidth: 650}} className={'All'}>
@@ -45,8 +62,11 @@ const ListHeroCard =
               </Table>
             </TableContainer>
       </Card>
-      <Button variant="contained" onClick={() => setIsMaj(typePersonnage)} className="btnListPlayerCard">
+      <Button variant="contained" onClick={() => equipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
         Equiper l'arme du joueur
+      </Button>
+      <Button variant="contained" onClick={() => desequipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
+        Déséquiper l'arme du joueur
       </Button>
     </Grid>
   );

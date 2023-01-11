@@ -1,5 +1,5 @@
 export type ListPlayer = {
-    id?: number;
+    id: number;
     IdWeapon?: number;
     name?: string;
     strength?: number;

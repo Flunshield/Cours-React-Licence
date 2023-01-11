@@ -46,19 +46,22 @@ export default function GameControl() {
       if(isMaj == 1)
       {
         GetHeros()
+        setTypePersonnage(0)
       }
       if(isMaj == 2)
       {
       GetEnemies()
+      setTypePersonnage(0)
     }
     }, [isMaj])
+
+    console.log(typePersonnage)
 
   const listPlayers = () =>
   {
     setIsUseHero(false)
     setIsUseEnemy(false)
   }
-console.log(typePersonnage)
   return (
     <>
       <div className="btn">
