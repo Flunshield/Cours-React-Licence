@@ -46,12 +46,12 @@ export default function GameControl() {
       if(isMaj == 1)
       {
         GetHeros()
-        setTypePersonnage(0)
+        setIsMaj(0)
       }
       if(isMaj == 2)
       {
       GetEnemies()
-      setTypePersonnage(0)
+      setIsMaj(0)
     }
     }, [isMaj])
 
