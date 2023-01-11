@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ListPlayer } from "../Interfaces/ListPlayer";
 import '../Css/GameControl.css';
 import ListPlayersCard from "./ListPlayersCard";
-import { API_LINK_GET_HERO, API_LINK_GET_BADGUY } from "../Constant/Constant";
+import { API_GET_ALL_HERO, API_GET_ALL_BADGUY } from "../Constant/Constant";
 
 export default function GameControl() {
   const [listHero, setListHero] = useState<ListPlayer[]>([])
@@ -17,7 +17,7 @@ export default function GameControl() {
   //Get all Hero
   const GetHeros = async () => {
     try {
-      await fetch(API_LINK_GET_HERO, {
+      await fetch(API_GET_ALL_HERO, {
         method: 'GET'
       })
         .then(response => {
@@ -40,7 +40,7 @@ export default function GameControl() {
   //Get all Enemies
   const GetEnemies = async () => {
     try {
-      await fetch(API_LINK_GET_BADGUY, {
+      await fetch(API_GET_ALL_BADGUY, {
         method: 'GET'
       })
         .then(response => {
