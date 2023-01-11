@@ -1,60 +1,82 @@
 import { Button, Grid } from "@mui/material";
 import { useState, useEffect } from "react";
 import { ListPlayer } from "../Interfaces/ListPlayer";
-import ListPlayerCard from "./ListPlayerCard";
+import ListHeroCard from "./ListHeroCard";
 
 export default function GameControl() {
-    const [listPlayer, setlistPlayer] = useState<ListPlayer[]>([])
+    const [listHero, setListHero] = useState<ListPlayer[]>([])
+    const [listEnemy, setListEnemy] = useState<ListPlayer[]>([])
     const [isUse, setIsUse] = useState(false)
-    const [isPlayerLoading, setisPlayerLoading] = useState(false)
-    const API_LINK = "https://localhost:7148/getAllHeroes"
-    const fetchData = async () => {
-      await fetch(API_LINK, {
+    const API_LINK_GET_HERO = "https://localhost:7148/getAllHeroes"
+    const API_LINK_GET_ENEMY = "https://localhost:7148/getAllEnemys"
+    
+    //Get all Hero
+    const GetHeros = async () => {
+      await fetch(API_LINK_GET_HERO, {
         method: 'GET'
       })
       .then((res) => res.json())
       .then((result: ListPlayer[]) => {
-        setlistPlayer(result);
-        setisPlayerLoading(true)
-        
+        setListHero(result);
+        setIsUse(true)
       });
   }
 
-  useEffect(() => {
+      //Get all Enemies
+      const GetEnemies = async () => {
+        await fetch(API_LINK_GET_ENEMY, {
+          method: 'GET'
+        })
+        .then((res) => res.json())
+        .then((result: ListPlayer[]) => {
+          setListEnemy(result);
+          setIsUse(true)
+        });
+    }
 
-  }, [isUse])
-
-  const lookHeros = () =>
+  const listPlayers = () =>
   {
-    setIsUse(!isUse)
+    setIsUse(false)
   }
-  console.log(listPlayer)
   return (
 <>
       <Grid
-        spacing={'16'}
         justifyContent={'center'}
         marginTop={10}
       >
-        <Button variant="contained" onClick={lookHeros}>
-          {isUse ? 
-          "Fermer le composant"
-          :
-          "Ouvrir le composant"}
+        {isUse ?
+        <Button variant="contained" onClick={listPlayers}>
+          Fermer la liste des héros
         </Button>
-        {isUse && <div>
-        <Button variant="contained" onClick={fetchData}>
-          {isPlayerLoading ? 
-          "Mettre à jour la liste des héros"
-          :
-          "Afficher la liste des héros"
-          }
-          </Button>
-        {listPlayer.map((listPlayer) => {
-          return <ListPlayerCard key={listPlayer.id} listPlayer={listPlayer} />;
-        })}
-        </div>}
+        :
+        <Button variant="contained" onClick={GetHeros}>
+          Ouvrir la liste des héros
+        </Button>}
       </Grid>
+
+      <Grid
+        justifyContent={'center'}
+        marginTop={1}
+      >
+        {isUse ?
+        <Button variant="contained" onClick={listPlayers}>
+          Fermer la liste des enemies
+        </Button>
+        :
+        <Button variant="contained" onClick={GetEnemies}>
+          Ouvrir la liste des enemies
+        </Button>}
+        {isUse && listEnemy.map((listEnemy) => {
+          return <ListHeroCard key={listEnemy.id} listHero={listEnemy} />;
+        })}
+      </Grid>
+      
+      {isUse && listHero.map((listHero) => {
+        return <ListHeroCard key={listHero.id} listHero={listHero} />;
+      })}
+      {isUse && listEnemy.map((listEnemy) => {
+        return <ListHeroCard key={listEnemy.id} listHero={listEnemy} />;
+      })}
     </>
   );
 }

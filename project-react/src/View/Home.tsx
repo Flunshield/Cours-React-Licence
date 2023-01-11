@@ -1,5 +1,4 @@
 import Copyright from '../Composents/Copyright';
-import GameControl from '../Composents/GameControl';
 import HeadBand from '../Composents/HeadBand';
 import News from '../Composents/News';
   
@@ -7,7 +6,6 @@ import News from '../Composents/News';
     return (
       <>
         <HeadBand />
-        <GameControl />
         <News />
         <Copyright />
       </>

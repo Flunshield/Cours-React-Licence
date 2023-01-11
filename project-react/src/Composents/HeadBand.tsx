@@ -1,6 +1,8 @@
 
-import { Box, Typography, Divider, List, ListItem, ListItemButton, ListItemText, Link, AppBar, Toolbar, IconButton, Drawer } from '@mui/material';
+import { Box, Typography, Divider, List, ListItem, ListItemButton, ListItemText, Link, AppBar, Toolbar, IconButton, Drawer, Button } from '@mui/material';
 import React from 'react';
+import '../Css/HeadBand.css';
+import { Link as RouterLink } from 'react-router-dom';
 
 interface Props {
   window?: () => Window;
@@ -14,7 +16,7 @@ type NavRoute = {
   displayLink: boolean;
 };
 
-export default function DrawerAppBar(props: Props) {
+export default function HeadBand(props: Props) {
 
   const navItems: NavRoute[] = [
     {
@@ -23,8 +25,8 @@ export default function DrawerAppBar(props: Props) {
       displayLink: true,
     },
     {
-      route: '/books',
-      label: 'Création de personnage',
+      route: '/ListPlayers',
+      label: 'Liste de personnage',
       displayLink: true,
     },
   ];
@@ -37,17 +39,19 @@ export default function DrawerAppBar(props: Props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Acceuil
-      </Typography>
-      <Divider />
-      <List>
-        {navItems.map(
+      <List className='list'>
+      {navItems.map(
           (item) =>
             item.displayLink && (
               <ListItem key={item.route} disablePadding>
                 <ListItemButton sx={{ textAlign: 'center' }}>
-            /* Ajouter ici le lien vers la nouvelle page */
+                  <ListItemText
+                    primary={
+                      <Link component={RouterLink} to={item.route} className='Btn'>
+                        {item.label}
+                      </Link>
+                    }
+                  />
                 </ListItemButton>
               </ListItem>
             )
@@ -60,50 +64,31 @@ export default function DrawerAppBar(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex'}} className='All'>
       <AppBar component="nav">
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-          </IconButton>
+
           <Typography
             textAlign={'left'}
-            variant="h6"
+            variant="h5"
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Commande du jeu
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            /* Ajouter ici le lien vers la nouvelle page */
+            Projet REACT ISITECH RPI-DEV
+          
+            </Typography>
+          <Box>
+          <Typography
+            textAlign={'left'}
+            variant="h5"
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+          >
+            {drawer}
+            </Typography>
           </Box>
         </Toolbar>
       </AppBar>
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
     </Box>
   );
 }
