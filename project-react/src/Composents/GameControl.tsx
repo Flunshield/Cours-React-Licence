@@ -3,43 +3,61 @@ import { useEffect, useState } from "react";
 import { ListPlayer } from "../Interfaces/ListPlayer";
 import '../Css/GameControl.css';
 import ListPlayersCard from "./ListPlayersCard";
-import { API_LINK_GET_HERO, API_LINK_GET_ENEMY } from "../Constant/Constant";
+import { API_LINK_GET_HERO, API_LINK_GET_BADGUY } from "../Constant/Constant";
 
 export default function GameControl() {
   const [listHero, setListHero] = useState<ListPlayer[]>([])
-  const [listEnemy, setListEnemy] = useState<ListPlayer[]>([])
+  const [listbadGuy, setListBadGuy] = useState<ListPlayer[]>([])
   const [isUseHero, setIsUseHero] = useState(false)
-  const [isUseEnemy, setIsUseEnemy] = useState(false)
+  const [isUsebadGuy, setIsUseBadGuy] = useState(false)
   const [isMaj, setIsMaj] = useState(0)
-  const [typePersonnage, setTypePersonnage] = useState(0)
+  const [numberTypePersonnage, setNumberTypePersonnage] = useState(0)
 
 
   //Get all Hero
   const GetHeros = async () => {
-    await fetch(API_LINK_GET_HERO, {
-      method: 'GET'
-    })
-      .then((res) => res.json())
-      .then((result: ListPlayer[]) => {
-        setListHero(result);
-        setIsUseHero(true)
-        setIsUseEnemy(false)
-        setTypePersonnage(1)
-      });
+    try {
+      await fetch(API_LINK_GET_HERO, {
+        method: 'GET'
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((result: ListPlayer[]) => {
+          setListHero(result)
+          setIsUseHero(true)
+          setIsUseBadGuy(false)
+          setNumberTypePersonnage(1)
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   //Get all Enemies
   const GetEnemies = async () => {
-    await fetch(API_LINK_GET_ENEMY, {
-      method: 'GET'
-    })
-      .then((res) => res.json())
-      .then((result: ListPlayer[]) => {
-        setListEnemy(result);
-        setIsUseEnemy(true)
-        setIsUseHero(false)
-        setTypePersonnage(2)
-      });
+    try {
+      await fetch(API_LINK_GET_BADGUY, {
+        method: 'GET'
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((result: ListPlayer[]) => {
+          setListBadGuy(result);
+          setIsUseBadGuy(true)
+          setIsUseHero(false)
+          setNumberTypePersonnage(2)
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
@@ -53,17 +71,15 @@ export default function GameControl() {
     }
   }, [isMaj])
 
-  console.log(typePersonnage)
-
   const listPlayers = () => {
     setIsUseHero(false)
-    setIsUseEnemy(false)
+    setIsUseBadGuy(false)
   }
   return (
     <>
       <div className="btn">
         <div className="btnUnit">
-          {isUseHero && !isUseEnemy ?
+          {isUseHero && !isUsebadGuy ?
             <Button variant="contained" onClick={listPlayers}>
               Fermer la liste des héros
             </Button>
@@ -74,21 +90,21 @@ export default function GameControl() {
         </div>
 
         <div>
-          {isUseEnemy && !isUseHero ?
+          {isUsebadGuy && !isUseHero ?
             <Button variant="contained" onClick={listPlayers}>
-              Fermer la liste des enemies
+              Fermer la liste des ennemies
             </Button>
             :
             <Button variant="contained" onClick={GetEnemies}>
-              Ouvrir la liste des enemies
+              Ouvrir la liste des ennemies
             </Button>}
         </div>
       </div>
-      {isUseHero && !isUseEnemy && listHero.map((listHero) => {
-        return <ListPlayersCard key={listHero.id} listPlayer={listHero} typePersonnage={typePersonnage} isMaj={isMaj} setIsMaj={setIsMaj} />;
+      {isUseHero && !isUsebadGuy && listHero.map((listHero) => {
+        return <ListPlayersCard key={listHero.id} listPlayer={listHero} numberTypePersonnage={numberTypePersonnage} isMaj={isMaj} setIsMaj={setIsMaj} />;
       })}
-      {isUseEnemy && !isUseHero && listEnemy.map((listEnemy) => {
-        return <ListPlayersCard key={listEnemy.id} listPlayer={listEnemy} typePersonnage={typePersonnage} isMaj={isMaj} setIsMaj={setIsMaj} />;
+      {isUsebadGuy && !isUseHero && listbadGuy.map((listbadGuy) => {
+        return <ListPlayersCard key={listbadGuy.id} listPlayer={listbadGuy} numberTypePersonnage={numberTypePersonnage} isMaj={isMaj} setIsMaj={setIsMaj} />;
       })}
     </>
   );

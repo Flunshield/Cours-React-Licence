@@ -1,51 +1,87 @@
-import { Grid, Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, Alert } from "@mui/material";
+import { Grid, Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from "@mui/material";
 import { ListPlayer } from "../Interfaces/ListPlayer";
 import '../Css/ListPlayerCard.css';
 import { useState } from "react";
-import { API_PUT_EQUIP_WEAPON_ENEMY, API_PUT_EQUIP_WEAPON_HERO, API_PUT_REMOVE_WEAPON_ENEMY, API_PUT_REMOVE_WEAPON_HERO } from "../Constant/Constant";
+import { API_PUT_EQUIP_WEAPON_BADGUY, API_PUT_EQUIP_WEAPON_HERO, API_PUT_REMOVE_WEAPON_BADGUY, API_PUT_REMOVE_WEAPON_HERO } from "../Constant/Constant";
 
-interface ListHeroCardProps {
+interface ListPlayerCardProps {
   listPlayer: ListPlayer;
-  typePersonnage: number;
+  numberTypePersonnage: number;
   setIsMaj: (n: number) => void;
   isMaj: number;
 };
 
-const ListHeroCard =
+const ListPlayerCard =
   ({ listPlayer,
-    typePersonnage,
+    numberTypePersonnage,
     setIsMaj
-  }: ListHeroCardProps) => {
+  }: ListPlayerCardProps) => {
 
-    const [isHero] = useState(typePersonnage)
+    const [isHero] = useState(numberTypePersonnage)
     const PutEquipWeapon = async (IdPlayer: number) => {
-      setIsMaj(0)
-      await fetch(API_PUT_EQUIP_WEAPON_HERO + IdPlayer, {
-        method: 'PUT'
-      })
-      setIsMaj(typePersonnage)
+      try {
+        setIsMaj(0)
+        await fetch(API_PUT_EQUIP_WEAPON_HERO + IdPlayer, {
+          method: 'PUT'
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error ${response.status}`);
+            };
+          })
+        setIsMaj(numberTypePersonnage)
+      } catch (error) {
+        console.log(error);
+      }
     };
-    const PutEquipWeaponEnemy = async (IdPlayer: number) => {
-      setIsMaj(0)
-      await fetch(API_PUT_EQUIP_WEAPON_ENEMY + IdPlayer, {
-        method: 'PUT'
-      })
-      setIsMaj(typePersonnage)
+    const PutEquipWeaponBadGuy = async (IdPlayer: number) => {
+      try {
+        setIsMaj(0)
+        await fetch(API_PUT_EQUIP_WEAPON_BADGUY + IdPlayer, {
+          method: 'PUT'
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error ${response.status}`);
+            };
+          })
+        setIsMaj(numberTypePersonnage)
+      } catch (error) {
+        console.log(error);
+      }
     };
-    const PutEsequipWeaponEnemy = async (IdPlayer: number) => {
-      setIsMaj(0)
-      await fetch(API_PUT_REMOVE_WEAPON_ENEMY + IdPlayer, {
-        method: 'PUT'
-      })
-      setIsMaj(typePersonnage)
+    const PutRemovepWeaponBadGuy = async (IdPlayer: number) => {
+      try {
+        setIsMaj(0)
+        await fetch(API_PUT_REMOVE_WEAPON_BADGUY + IdPlayer, {
+          method: 'PUT'
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error ${response.status}`);
+            };
+          })
+        setIsMaj(numberTypePersonnage);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     const PutRemoveWeaponHero = async (IdPlayer: number) => {
-      setIsMaj(0)
-      await fetch(API_PUT_REMOVE_WEAPON_HERO + IdPlayer, {
-        method: 'PUT'
-      })
-      setIsMaj(typePersonnage)
+      try {
+        setIsMaj(0)
+        await fetch(API_PUT_REMOVE_WEAPON_HERO + IdPlayer, {
+          method: 'PUT'
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error ${response.status}`);
+            };
+          })
+        setIsMaj(numberTypePersonnage)
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     return (
@@ -80,14 +116,14 @@ const ListHeroCard =
             </Table>
           </TableContainer>
         </Card>
-        <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? PutEquipWeapon(listPlayer.id) : PutEquipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
-          Equiper l'arme du joueur
+        <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? PutEquipWeapon(listPlayer.id) : PutEquipWeaponBadGuy(listPlayer.id)} className="btnListPlayerCard">
+          Équiper l'arme du joueur
         </Button>
-        <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? PutRemoveWeaponHero(listPlayer.id) : PutEsequipWeaponEnemy(listPlayer.id)} className="btnListPlayerCard">
-          Déséquiper l'arme du joueur
+        <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? PutRemoveWeaponHero(listPlayer.id) : PutRemovepWeaponBadGuy(listPlayer.id)} className="btnListPlayerCard">
+          Retirer l'arme du joueur
         </Button>
       </Grid>
     );
   }
 
-export default ListHeroCard;
+export default ListPlayerCard;

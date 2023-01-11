@@ -1,15 +1,15 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-import { API_DELETE_HERO, API_DELETE_ENEMY } from "../Constant/Constant";
+import { API_DELETE_HERO, API_DELETE_BADGUY } from "../Constant/Constant";
 
 export default function DeletePlayer() {
     const [heroDeleted, setHeroDeleted] = useState<string | undefined>("")
-    const [enemyDeleted, setEnemyDeleted] = useState<string | undefined>("")
+    const [badGuyDeleted, setBadGuyDeleted] = useState<string | undefined>("")
 
 
     const [show, setShow] = useState(true);
     const [valueHero, setValueHero] = useState(0);
-    const [valueEnemy, setValueEnemy] = useState(0);
+    const [valuebadGuy, setValuebadGuy] = useState(0);
 
     const DeleteHero = async (id: number) => {
         try {
@@ -23,18 +23,18 @@ export default function DeletePlayer() {
                         throw new Error(`HTTP error ${response.status}`);
                     };
                 })
-            setEnemyDeleted("")
-            setHeroDeleted("Le héro a bien été suprimé !")
+            setBadGuyDeleted("")
+            setHeroDeleted("Le héros a bien été supprimé !")
             setShow(true);
         } catch (error) {
             console.log(error);
+            alert("Le héros que vous souhaitez supprimer n'existe pas.");
         }
     };
 
-    const DeleteEnemy = async (id: number) => {
+    const DeletebadGuy = async (id: number) => {
         try {
-            console.log(id);
-            await fetch(API_DELETE_ENEMY, {
+            await fetch(API_DELETE_BADGUY, {
                 method: 'DELETE',
                 body: JSON.stringify({ id: id }),
                 headers: { 'Content-Type': 'application/json' }
@@ -45,10 +45,11 @@ export default function DeletePlayer() {
                     };
                 })
             setHeroDeleted("")
-            setEnemyDeleted("L'enemie a bien été suprimé !")
+            setBadGuyDeleted("L'ennemie a bien été supprimé !")
             setShow(true);
         } catch (error) {
             console.log(error);
+            alert("Le BadGuy que vous souhaitez supprimer n'existe pas.")
         }
     };
 
@@ -65,7 +66,7 @@ export default function DeletePlayer() {
     return (
         <Box>
             <Box sx={{ width: '100%' }}>
-                <p>Lorsque vous cliquerez sur le bouton ci-dessous, vous suprimerez l'héro sélectioné !</p>
+                <p>Lorsque vous cliquerez sur le bouton ci-dessous, vous supprimerez le héros sélectionné !</p>
                 <Box
                     component="form"
                     sx={{
@@ -78,12 +79,12 @@ export default function DeletePlayer() {
                     <TextField type={'number'} id="hero" value={valueHero} onChange={(e) => setValueHero(parseInt(e.target.value))} variant="outlined" />
                 </Box>
                 <Button variant="contained" className="" onClick={() => DeleteHero(valueHero)}>
-                    Suprimer un Héro
+                    Supprimer un héros
                 </Button>
                 {show && heroDeleted && <p>{heroDeleted}</p>}
             </Box>
             <Box sx={{ width: '100%' }}>
-                <p>Lorsque vous cliquerez sur le bouton ci-dessous, vous suprimerez l'énemie sélectioné :</p>
+                <p>Lorsque vous cliquerez sur le bouton ci-dessous, vous supprimerez l'ennemie sélectionné :</p>
                 <Box
                     component="form"
                     sx={{
@@ -93,12 +94,12 @@ export default function DeletePlayer() {
                     autoComplete="off"
                 >
 
-                    <TextField type={'number'} id="enemie" value={valueEnemy} onChange={(e) => setValueEnemy(parseInt(e.target.value))} variant="outlined" />
+                    <TextField type={'number'} id="enemie" value={valuebadGuy} onChange={(e) => setValuebadGuy(parseInt(e.target.value))} variant="outlined" />
                 </Box>
-                <Button variant="contained" className="" onClick={() => DeleteEnemy(valueEnemy)}>
-                    Généré un Enemie
+                <Button variant="contained" className="" onClick={() => DeletebadGuy(valuebadGuy)}>
+                    Générer un ennemi
                 </Button>
-                {show && enemyDeleted && <p>{enemyDeleted}</p>}
+                {show && badGuyDeleted && <p>{badGuyDeleted}</p>}
             </Box>
         </Box>
     );

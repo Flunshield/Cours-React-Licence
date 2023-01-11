@@ -24,12 +24,12 @@ export default function HeadBand(props: Props) {
     },
     {
       route: '/ListPlayers',
-      label: 'Liste de personnage',
+      label: 'Liste des joueurs',
       displayLink: true,
     },
     {
       route: '/CreatePlayers',
-      label: 'Gestion de personnage',
+      label: 'Gestion des joueurs',
       displayLink: true,
     },
   ];
@@ -78,7 +78,6 @@ export default function HeadBand(props: Props) {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             Projet REACT ISITECH RPI-DEV
-
           </Typography>
           <Box>
             <Typography
