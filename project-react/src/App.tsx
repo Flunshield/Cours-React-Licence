@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './Css/App.css';
-import CreateCharacter from './View/CreateCharacter';
 import Home from './View/Home';
 import ListCharacter from './View/ListCharacter';
+import ManagementCharacter from './View/ManagementCharacter';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ListPlayers" element={<ListCharacter />} />
-        <Route path="/CreatePlayers" element={<CreateCharacter />} />
+        <Route path="/CreatePlayers" element={<ManagementCharacter />} />
       </Routes>
     </BrowserRouter>
   );

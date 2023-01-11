@@ -2,6 +2,7 @@ import { Grid, Card, Paper, Table, TableBody, TableCell, TableContainer, TableHe
 import { ListPlayer } from "../Interfaces/ListPlayer";
 import '../Css/ListPlayerCard.css';
 import { useState } from "react";
+import { API_PUT_EQUIP_WEAPON_ENEMY, API_PUT_EQUIP_WEAPON_HERO, API_PUT_REMOVE_WEAPON_ENEMY, API_PUT_REMOVE_WEAPON_HERO } from "../Constant/Constant";
 
 interface ListHeroCardProps {
   listPlayer: ListPlayer;
@@ -17,33 +18,31 @@ const ListHeroCard =
   }: ListHeroCardProps) => {
 
     const [isHero] = useState(typePersonnage)
-      const PutEquipWeapon = (IdPlayer: number) => {
+      const PutEquipWeapon = async (IdPlayer: number) => {
         setIsMaj(0)
-      fetch(`https://localhost:7148/equipWeapon/${IdPlayer}`, {
+      await fetch(API_PUT_EQUIP_WEAPON_HERO + IdPlayer, {
         method: 'PUT'
       })
         setIsMaj(typePersonnage)
     };
-
-    const PutEquipWeaponEnemy = (IdPlayer: number) => {
+    const PutEquipWeaponEnemy = async (IdPlayer: number) => {
       setIsMaj(0)
-    fetch(`https://localhost:7148/equipWeaponEnemy/${IdPlayer}`, {
+    await fetch(API_PUT_EQUIP_WEAPON_ENEMY + IdPlayer, {
       method: 'PUT'
     })
       setIsMaj(typePersonnage)
   };
-
-    const PutEsequipWeaponEnemy = (IdPlayer: number) => {
+    const PutEsequipWeaponEnemy = async (IdPlayer: number) => {
       setIsMaj(0)
-      fetch(`https://localhost:7148/removeWeaponEnemy/${IdPlayer}`, {
+      await fetch(API_PUT_REMOVE_WEAPON_ENEMY + IdPlayer, {
         method: 'PUT'
       })
         setIsMaj(typePersonnage)
     };
 
-    const PutRemoveWeaponHero = (IdPlayer: number) => {
+    const PutRemoveWeaponHero = async (IdPlayer: number) => {
       setIsMaj(0)
-      fetch(`https://localhost:7148/removeWeaponHero/${IdPlayer}`, {
+      await fetch(API_PUT_REMOVE_WEAPON_HERO + IdPlayer, {
         method: 'PUT'
       })
         setIsMaj(typePersonnage)
@@ -57,6 +56,7 @@ const ListHeroCard =
                 <TableHead>
                   <TableRow>
                     <TableCell>Nom du personnage</TableCell>
+                    <TableCell align="right">Id du personnage</TableCell>
                     <TableCell align="right">Classe du personnage</TableCell>
                     <TableCell align="right">Vitalité du personnage</TableCell>
                     <TableCell align="right">Force du personnage</TableCell>
@@ -70,6 +70,7 @@ const ListHeroCard =
                       <TableCell component="th" scope="row">
                       {listPlayer.name}
                       </TableCell>
+                      <TableCell align="center">{listPlayer.id}</TableCell>
                       <TableCell align="center">{listPlayer.classePlayer}</TableCell>
                       <TableCell align="center">{listPlayer.vitality}</TableCell>
                       <TableCell align="center">{listPlayer.strength}</TableCell>

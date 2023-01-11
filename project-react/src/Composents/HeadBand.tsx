@@ -29,7 +29,7 @@ export default function HeadBand(props: Props) {
     },
     {
       route: '/CreatePlayers',
-      label: 'Création de personnage',
+      label: 'Gestion de personnage',
       displayLink: true,
     },
   ];

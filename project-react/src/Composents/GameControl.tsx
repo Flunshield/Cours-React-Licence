@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ListPlayer } from "../Interfaces/ListPlayer";
 import '../Css/GameControl.css';
 import ListPlayersCard from "./ListPlayersCard";
+import { API_LINK_GET_HERO, API_LINK_GET_ENEMY } from "../Constant/Constant";
 
 export default function GameControl() {
     const [listHero, setListHero] = useState<ListPlayer[]>([])
@@ -11,8 +12,7 @@ export default function GameControl() {
     const [isUseEnemy, setIsUseEnemy] = useState(false)
     const [isMaj, setIsMaj] = useState(0)
     const [typePersonnage, setTypePersonnage] = useState(0)
-    const API_LINK_GET_HERO = "https://localhost:7148/getAllHeroes"
-    const API_LINK_GET_ENEMY = "https://localhost:7148/getAllEnemys"
+
     
     //Get all Hero
     const GetHeros = async () => {

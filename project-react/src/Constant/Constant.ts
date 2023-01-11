@@ -1,0 +1,10 @@
+export const API_LINK_POST_HERO = "https://localhost:7148/addHero"
+export const API_LINK_POST_ENEMY = "https://localhost:7148/addEnemy"
+export const API_DELETE_HERO = `https://localhost:7148/deleteHero`
+export const API_DELETE_ENEMY = `https://localhost:7148/deleteEnemy`
+export const API_LINK_GET_HERO = "https://localhost:7148/getAllHeroes"
+export const API_LINK_GET_ENEMY = "https://localhost:7148/getAllEnemys"
+export const API_PUT_EQUIP_WEAPON_HERO = `https://localhost:7148/equipWeapon/`
+export const API_PUT_EQUIP_WEAPON_ENEMY = `https://localhost:7148/equipWeaponEnemy/`
+export const API_PUT_REMOVE_WEAPON_ENEMY = `https://localhost:7148/removeWeaponEnemy/`
+export const API_PUT_REMOVE_WEAPON_HERO = `https://localhost:7148/removeWeaponHero/`

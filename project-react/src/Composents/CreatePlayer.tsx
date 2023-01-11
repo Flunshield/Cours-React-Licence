@@ -1,15 +1,12 @@
-import { Box, Button, Paper, Step, StepLabel, Stepper, TextField } from "@mui/material";
-import { Http2ServerRequest } from "http2";
-import { SetStateAction, useEffect, useState } from "react";
-import { ListPlayer } from "../Interfaces/ListPlayer";
-import ListPlayersCard from "./ListPlayersCard";
+import { Box, Button } from "@mui/material";
+import { useEffect, useState } from "react";
+import { API_LINK_POST_HERO, API_LINK_POST_ENEMY } from "../Constant/Constant";
 
 
 export default function CreatePlayer() {
-  const [herocreated, setHerocreated] = useState<string>("")
-  const [enemyCreated, setEnemyCreated] = useState<string>("")
-  const API_LINK_POST_HERO = "https://localhost:7148/addHero"
-  const API_LINK_POST_ENEMY = "https://localhost:7148/addEnemy"
+  const [herocreated, setHerocreated] = useState<string|undefined>(undefined)
+  const [enemyCreated, setEnemyCreated] = useState<string|undefined>(undefined)
+
 
   const [show, setShow] = useState(true);
 
@@ -17,6 +14,7 @@ export default function CreatePlayer() {
     await fetch(API_LINK_POST_HERO, {
       method: 'POST',
     })
+    setEnemyCreated("")
     setHerocreated("Le héro a été créé !")
     setShow(true);
   };
@@ -25,6 +23,7 @@ export default function CreatePlayer() {
     await fetch(API_LINK_POST_ENEMY, {
       method: 'POST',
     })
+    setHerocreated("")
     setEnemyCreated("L'enemie a été créé !")
     setShow(true);
   };
@@ -37,25 +36,23 @@ export default function CreatePlayer() {
     return () => {
         clearTimeout(timeout);
     }
-}, [herocreated, enemyCreated]);
+}, [show]);
 
   return (
     <Box>
-      <h1 >Bienvenue sur la page de créaton de personnage</h1>
-      <p>Lorsque vous cliquerez sur le bouton "Créer un héro" ou "Créer un Enemmie", le jeu vous génèrera un personnage aléatoirement.</p>
       <Box sx={{ width: '100%' }}>
       <p>Lorsque vous cliquerez sur le bouton ci-dessous, vous génèrerez un Héro !</p>
       <Button variant="contained"  className="" onClick={PostNewHero}>
         Généré un Héro
       </Button>
-        {show && <p>{herocreated}</p>}
+        {show && herocreated && <p>{herocreated}</p>}
       </Box>
       <Box sx={{ width: '100%' }}>
       <p>Lorsque vous cliquerez sur le bouton ci-dessous, vous génèrerez un Enemie !</p>
       <Button variant="contained"  className="" onClick={PostNewEnemy}>
         Généré un Enemie
       </Button>
-        {show && <p>{enemyCreated}</p>}
+        {show && enemyCreated && <p>{enemyCreated}</p>}
       </Box>
     </Box>
   );
