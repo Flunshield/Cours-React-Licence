@@ -1,7 +1,6 @@
-import Copyright from '../Composents/Copyright';
+
 import CreatePlayer from '../Composents/CreatePlayer';
 import DeletePlayerByInput from '../Composents/DeletePlayerByInput';
-import DeletePlayer from '../Composents/DeletePlayerByInput';
 import GetWeapon from '../Composents/GetWeapon';
 import HeadBand from '../Composents/HeadBand';
 
@@ -16,7 +15,6 @@ export default function ManagementCharacter() {
       <CreatePlayer />
       <DeletePlayerByInput />
       <GetWeapon />
-      <Copyright />
     </>
   );
 }
