@@ -4,7 +4,7 @@ import React from 'react';
 import '../Css/HeadBand.css';
 import { Link as RouterLink } from 'react-router-dom';
 
-interface Props {
+interface HeadBandProps {
   window?: () => Window;
 }
 
@@ -14,7 +14,7 @@ type NavRoute = {
   displayLink: boolean;
 };
 
-export default function HeadBand(props: Props) {
+export default function HeadBand(props: HeadBandProps) {
 
   const navItems: NavRoute[] = [
     {
