@@ -1,6 +1,7 @@
 import Copyright from '../Composents/Copyright';
 import CreatePlayer from '../Composents/CreatePlayer';
-import DeletePlayer from '../Composents/DeletePlayer';
+import DeletePlayerByInput from '../Composents/DeletePlayerByInput';
+import DeletePlayer from '../Composents/DeletePlayerByInput';
 import GetWeapon from '../Composents/GetWeapon';
 import HeadBand from '../Composents/HeadBand';
 
@@ -13,7 +14,7 @@ export default function ManagementCharacter() {
         <p>Lorsque vous cliquerez sur le bouton "Créer un héro" ou "Créer un Enemmie", le jeu vous génèrera un personnage aléatoirement.</p>
       </div>
       <CreatePlayer />
-      <DeletePlayer />
+      <DeletePlayerByInput />
       <GetWeapon />
       <Copyright />
     </>

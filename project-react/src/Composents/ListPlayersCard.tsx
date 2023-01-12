@@ -1,8 +1,8 @@
-import { Grid, Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button } from "@mui/material";
+import { Grid, Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, IconButton } from "@mui/material";
 import { ListPlayer } from "../Interfaces/ListPlayer";
 import '../Css/ListPlayerCard.css';
 import { useState } from "react";
-import { API_PUT_EQUIP_WEAPON_BADGUY, API_PUT_EQUIP_WEAPON_HERO, API_PUT_REMOVE_WEAPON_BADGUY, API_PUT_REMOVE_WEAPON_HERO } from "../Constant/Constant";
+import { API_DELETE_BADGUY, API_DELETE_HERO, API_PUT_EQUIP_WEAPON_BADGUY, API_PUT_EQUIP_WEAPON_HERO, API_PUT_REMOVE_WEAPON_BADGUY, API_PUT_REMOVE_WEAPON_HERO } from "../Constant/Constant";
 
 interface ListPlayerCardProps {
   listPlayer: ListPlayer;
@@ -84,6 +84,44 @@ const ListPlayerCard =
       }
     };
 
+    const DeleteHero = async (id: number) => {
+      try {
+        await fetch(API_DELETE_HERO, {
+          method: 'DELETE',
+          body: JSON.stringify({ id: id }),
+          headers: { 'Content-Type': 'application/json' }
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error ${response.status}`);
+            };
+          })
+        setIsMaj(numberTypePersonnage)
+      } catch (error) {
+        console.log(error);
+        alert("Le héros que vous souhaitez supprimer n'existe pas.");
+      }
+    };
+
+    const DeletebadGuy = async (id: number) => {
+      try {
+        await fetch(API_DELETE_BADGUY, {
+          method: 'DELETE',
+          body: JSON.stringify({ id: id }),
+          headers: { 'Content-Type': 'application/json' }
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error ${response.status}`);
+            };
+          })
+        setIsMaj(numberTypePersonnage)
+      } catch (error) {
+        console.log(error);
+        alert("Le BadGuy que vous souhaitez supprimer n'existe pas.")
+      }
+    };
+
     return (
       <Grid className="GridListPlayerCard">
         <Card sx={{ maxWidth: 650 }} className={'All'}>
@@ -116,12 +154,19 @@ const ListPlayerCard =
             </Table>
           </TableContainer>
         </Card>
-        <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? PutEquipWeapon(listPlayer.id) : PutEquipWeaponBadGuy(listPlayer.id)} className="btnListPlayerCard">
-          Équiper l'arme du joueur
-        </Button>
-        <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? PutRemoveWeaponHero(listPlayer.id) : PutRemovepWeaponBadGuy(listPlayer.id)} className="btnListPlayerCard">
-          Retirer l'arme du joueur
-        </Button>
+        <div className="btnListPlayerCardGroup">
+          <div>
+            <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? PutEquipWeapon(listPlayer.id) : PutEquipWeaponBadGuy(listPlayer.id)} className="btnListPlayerCard">
+              Équiper l'arme du joueur
+            </Button>
+            <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? PutRemoveWeaponHero(listPlayer.id) : PutRemovepWeaponBadGuy(listPlayer.id)} className="btnListPlayerCard">
+              Retirer l'arme du joueur
+            </Button>
+          </div>
+          <Button variant="contained" onClick={() => (isHero > 0 && isHero < 2) ? DeleteHero(listPlayer.id) : DeletebadGuy(listPlayer.id)} className="btnListPlayerCard">
+            Supprimer joueur
+          </Button>
+        </div>
       </Grid>
     );
   }

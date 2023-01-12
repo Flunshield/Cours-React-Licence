@@ -97,7 +97,7 @@ export default function DeletePlayer() {
                     <TextField type={'number'} id="enemie" value={valuebadGuy} onChange={(e) => setValuebadGuy(parseInt(e.target.value))} variant="outlined" />
                 </Box>
                 <Button variant="contained" className="" onClick={() => DeletebadGuy(valuebadGuy)}>
-                    Générer un ennemi
+                Supprimer un ennemi
                 </Button>
                 {show && badGuyDeleted && <p>{badGuyDeleted}</p>}
             </Box>
