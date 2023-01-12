@@ -7,11 +7,11 @@ export default function UseReducer() {
     switch (action.type) {
       case 'incremented_age':
         console.log("Age avant l'ajout : ", state)
-        return { age: state.age + 1 }
+        return { ...state, age: state.age + 1 }
 
       case 'decremented_age':
         console.log("Age avant retrait : ", state)
-        return { age: state.age - 1 }
+        return { ...state, age: state.age - 1 }
 
       default:
         console.log('Je suis pas entré dans un case')
@@ -21,7 +21,7 @@ export default function UseReducer() {
 
   const [state, dispatch] = useReducer(reducer, { age: 0 });
   console.log(state)
-  
+
   return (
     <div className="divClasseName">
       <h1>Test du <strong>useReducer</strong></h1>
