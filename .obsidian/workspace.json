@@ -1,18 +1,22 @@
 {
   "main": {
-    "id": "62e03bc025fc2e55",
+    "id": "a69caf25626b5635",
     "type": "split",
     "children": [
       {
-        "id": "7bc3ce7db5592a47",
+        "id": "6da382879865ce72",
         "type": "tabs",
         "children": [
           {
-            "id": "bd5da4d7d13f4a5b",
+            "id": "152d7c41a14faffd",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -21,15 +25,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "33a7ba777927ad8c",
+    "id": "30de40935259d13a",
     "type": "split",
     "children": [
       {
-        "id": "2cdbbf85c0252191",
+        "id": "5023582dd5740201",
         "type": "tabs",
         "children": [
           {
-            "id": "5afb8b4b2afaa3b7",
+            "id": "f01c86ab350910f1",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -39,7 +43,7 @@
             }
           },
           {
-            "id": "49ef03457128d464",
+            "id": "bdd91a636173b332",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -54,7 +58,7 @@
             }
           },
           {
-            "id": "91257d403d698407",
+            "id": "6f949da99c2d1b23",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -68,19 +72,20 @@
     "width": 300
   },
   "right": {
-    "id": "738992b0e9e4a5c1",
+    "id": "e0fcfe9c188707a3",
     "type": "split",
     "children": [
       {
-        "id": "d4cada7e9372ced9",
+        "id": "168b7e66dcece4cf",
         "type": "tabs",
         "children": [
           {
-            "id": "cb31cc5cf499476b",
+            "id": "c61a8ba835496c8f",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -92,18 +97,19 @@
             }
           },
           {
-            "id": "8e5f413c073162c6",
+            "id": "08669c1fc43f6b5f",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "ff8012145de0b24f",
+            "id": "7992c44692d84220",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -114,11 +120,13 @@
             }
           },
           {
-            "id": "e417810b7022cd9e",
+            "id": "a9387262993d6492",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "README.md"
+              }
             }
           }
         ]
@@ -132,15 +140,12 @@
     "hiddenItems": {
       "switcher:Ouvrir le sélecteur rapide": false,
       "graph:Ouvrir la vue graphique": false,
+      "canvas:Create new canvas": false,
       "daily-notes:Ouvrir la note quotidienne": false,
       "templates:Insérer le modèle": false,
-      "command-palette:Ouvrir la palette de commandes": false,
-      "canvas:Create new canvas": false
+      "command-palette:Ouvrir la palette de commandes": false
     }
   },
-  "active": "bd5da4d7d13f4a5b",
-  "lastOpenFiles": [
-    "Cours.md",
-    "React project of the week.md"
-  ]
+  "active": "152d7c41a14faffd",
+  "lastOpenFiles": []
 }

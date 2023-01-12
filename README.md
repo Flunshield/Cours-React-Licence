@@ -27,3 +27,29 @@ The page will reload if you make edits.
 You will also see any lint errors in the console.
 ```
 
+### Capture d'écran
+
+Page d'acceuil
+![[Pasted image 20230112152330.png]]
+
+Page de la liste des joueurs :
+Vide :
+![[Pasted image 20230112152420.png]]
+
+Avec la liste des héros ouverte :
+![[Pasted image 20230112152448.png]]
+
+Avec la liste des ennemies ouverte :
+![[Pasted image 20230112152515.png]]
+
+Page de la gestions des joueurs :
+![[Pasted image 20230112152619.png]]
+
+Quand vous générez un Héros :
+![[Pasted image 20230112152734.png]]
+
+Quand vous générez un Ennemi
+![[Pasted image 20230112152809.png]]
+
+Quand vous regardez une arme :
+![[Pasted image 20230112152938.png]]
