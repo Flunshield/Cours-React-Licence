@@ -1,5 +1,5 @@
 
-import { Box, Typography, Divider, List, ListItem, ListItemButton, ListItemText, Link, AppBar, Toolbar, IconButton, Drawer, Button } from '@mui/material';
+import { Box, Typography, List, ListItem, ListItemButton, ListItemText, Link, AppBar, Toolbar } from '@mui/material';
 import React from 'react';
 import '../Css/HeadBand.css';
 import { Link as RouterLink } from 'react-router-dom';
@@ -33,7 +33,6 @@ export default function HeadBand(props: HeadBandProps) {
       displayLink: true,
     },
   ];
-  const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -62,9 +61,6 @@ export default function HeadBand(props: HeadBandProps) {
       </List>
     </Box>
   );
-
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: 'flex' }} className='HeadBand'>
