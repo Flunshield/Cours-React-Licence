@@ -1,0 +1,9 @@
+.divClasseName {
+    margin-left: 5%;
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    width: 25%;
+    display: block;
+    align-items: center;
+}
