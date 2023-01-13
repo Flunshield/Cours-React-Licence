@@ -1,7 +1,6 @@
 import { Box, TextField, Button, Card, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useState } from "react";
 import { API_GET_WEAPON } from "../Constant/Constant";
-import { ListPlayer } from "../Interfaces/ListPlayer";
 import { WeaponsInterface } from "../Interfaces/WeaponsInterface";
 import ListWeapon from "./ListWeapon";
 

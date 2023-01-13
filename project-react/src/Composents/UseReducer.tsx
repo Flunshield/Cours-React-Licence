@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import { useReducer } from "react";
 import '../Css/UseReducer.css';
 
 export default function UseReducer() {
