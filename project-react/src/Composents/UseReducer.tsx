@@ -25,16 +25,16 @@ export default function UseReducer() {
   return (
     <div className="divClasseName">
       <h1>Test du <strong>useReducer</strong></h1>
-      <p>Hello! You are {state.age}.</p>
+      <p>Bonjour, vous avez {state.age} ans.</p>
       <button onClick={() => {
         dispatch({ type: 'incremented_age' })
       }}>
-        Increment age
+        Ajouter 1 an
       </button>
       <button onClick={() => {
         dispatch({ type: 'decremented_age' })
       }}>
-        Decrement age
+        Retirer 1 an
       </button>
     </div>
   );
