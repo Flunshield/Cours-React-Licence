@@ -1,7 +1,9 @@
 import { Box, Button, Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
+import { useNavigate } from 'react-router-dom';
 
 export default function Error() {
+    const navigate = useNavigate();
     return (
         <Box
             sx={{
@@ -24,7 +26,16 @@ export default function Error() {
                         <Typography variant="h6">
                             La page que vous recherchez n'existe pas.
                         </Typography>
-                        <Button variant="contained" href='/' className='btn'>Acceuil</Button>
+                        <Grid>
+                            <Button variant="contained" href='/' className='btn'>Acceuil</Button>
+                            <Button variant="contained" className='btn'
+                                onClick={() => {
+                                    navigate(-1);
+                                }}
+                            >
+                                Page précédente
+                            </Button>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Container>
