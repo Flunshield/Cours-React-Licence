@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Button, Container, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 
@@ -25,7 +24,7 @@ export default function Error() {
                         <Typography variant="h6">
                             La page que vous recherchez n'existe pas.
                         </Typography>
-                        <Button variant="contained" href='/' className='btn'>Back Home</Button>
+                        <Button variant="contained" href='/' className='btn'>Acceuil</Button>
                     </Grid>
                 </Grid>
             </Container>

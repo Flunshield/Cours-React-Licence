@@ -7,21 +7,22 @@ import ErrorPage from './View/ErrorPage';
 import Home from './View/Home';
 import ListCharacter from './View/ListCharacter';
 import ManagementCharacter from './View/ManagementCharacter';
+import { ROOT_HOME, ROOT_LIST_PLAYER, ROOT_CREATE_PLAYER } from './Constant/Constant';
 
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: ROOT_HOME,
     element: <Home />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "ListPlayers",
+    path: ROOT_LIST_PLAYER,
     element: <ListCharacter />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "CreatePlayers",
+    path: ROOT_CREATE_PLAYER,
     element: <ManagementCharacter />,
     errorElement: <ErrorPage />,
   },
